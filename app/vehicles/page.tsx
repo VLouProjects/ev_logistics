@@ -2,14 +2,6 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import { vehicleCategories } from "@/data/vehicleCategories";
 
-const topBarColor = [
-  "bg-secondary",
-  "bg-primary",
-  "bg-[#1D4ED8]",
-  "bg-gray-500",
-  "bg-[#0E7490]"
-];
-
 const refPill: Record<string, string> = {
   "可選配":            "border-secondary/30 bg-secondary/10 text-secondary",
   "核心方案":          "border-primary/30 bg-primary/10 text-primary",
@@ -28,9 +20,9 @@ export default function VehiclesPage() {
           {vehicleCategories.map((item, i) => (
             <div
               key={item.name}
-              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-bg"
+              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-bg shadow-sm"
             >
-              <div className={`h-1 w-full shrink-0 ${topBarColor[i] ?? "bg-gray-300"}`} />
+              <div className="h-1 w-full shrink-0 bg-gradient-to-r from-primary to-secondary" />
 
               <div className="flex flex-1 flex-col p-6">
                 {/* Name + refrigeration badge */}
@@ -57,7 +49,7 @@ export default function VehiclesPage() {
                     {item.useCases.map((uc) => (
                       <span
                         key={uc}
-                        className="rounded-full border border-border px-3 py-1 text-xs text-gray-600"
+                        className="rounded-full border border-border bg-surface px-3 py-0.5 text-xs font-medium text-gray-600"
                       >
                         {uc}
                       </span>
@@ -66,7 +58,7 @@ export default function VehiclesPage() {
                 </div>
 
                 {/* Advisory footer */}
-                <div className="mt-auto border-t border-border pt-5 mt-6">
+                <div className="mt-auto border-t border-border pt-5">
                   <Link
                     href="/contact"
                     className="text-sm font-semibold text-primary transition hover:text-secondary"
@@ -81,7 +73,7 @@ export default function VehiclesPage() {
       </Section>
 
       {/* CTA */}
-      <section className="border-t border-border px-6 py-16 lg:px-8">
+      <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
         <div className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
           <div className="bg-[#1E293B] px-10 py-10 text-center md:px-14 md:py-12">
             <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">

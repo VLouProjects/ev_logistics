@@ -37,87 +37,78 @@ export default function AdvisoryProcess() {
     return () => clearInterval(id);
   }, []);
 
-  // Track spans from center of first circle to center of last — approximate at 12.5%/87.5%
-  const trackFillPct = (active / (steps.length - 1)) * 100;
-
   return (
-    <div className="relative">
+    <div className="mx-auto max-w-[900px]">
+      {steps.map((step, i) => {
+        const isActive = i === active;
+        const isDone   = i < active;
+        const isLast   = i === steps.length - 1;
 
-      {/* Connector track — desktop only */}
-      <div
-        aria-hidden
-        className="absolute left-[5.5%] right-[5.5%] top-[21px] hidden h-px bg-border md:block"
-      >
-        <div
-          className="h-full bg-primary transition-[width] duration-700 ease-in-out"
-          style={{ width: `${trackFillPct}%` }}
-        />
-      </div>
+        return (
+          <div key={step.number} className="flex gap-5">
 
-      <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-4">
-        {steps.map((step, i) => {
-          const isActive = i === active;
-          const isDone = i < active;
-
-          return (
-            <div key={step.number} className="flex flex-col">
-
-              {/* Step circle */}
+            {/* ── Left column: circle + connector ── */}
+            <div className="flex w-11 shrink-0 flex-col items-center">
+              {/* Circle */}
               <div
-                className={`relative z-10 mb-5 flex h-11 w-11 items-center justify-center rounded-full border-2 text-sm font-bold transition-colors duration-500 ${
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold transition-colors duration-500 ${
                   isActive
                     ? "border-primary bg-primary text-white"
                     : isDone
                     ? "border-primary bg-primary/10 text-primary"
-                    : "border-border bg-bg text-gray-400"
+                    : "border-border bg-surface text-gray-400"
                 }`}
               >
                 {isDone ? "✓" : step.number}
               </div>
 
-              {/* Step card */}
-              <div
-                className={`relative flex-1 overflow-hidden rounded-2xl border transition-colors duration-500 ${
-                  isActive
-                    ? "border-primary/30 bg-surface"
-                    : "border-border bg-bg"
-                }`}
-              >
-                <div className="p-5">
-                  <div
-                    className={`mb-2 text-base font-semibold transition-colors duration-500 ${
-                      isActive
-                        ? "text-primary"
-                        : isDone
-                        ? "text-gray-700"
-                        : "text-gray-500"
-                    }`}
-                  >
-                    {step.title}
-                  </div>
-                  <p className="text-sm leading-6 text-gray-500">
-                    {step.description}
-                  </p>
-                </div>
-
-                {/* Active progress fill bar */}
-                {isActive && (
-                  <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-surface2">
-                    <div
-                      key={active}
-                      className="h-full bg-primary"
-                      style={{
-                        width: "0%",
-                        animation: `processFill ${STEP_DURATION}ms linear forwards`
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
+              {/* Vertical connector line — fills the row height below the circle */}
+              {!isLast && (
+                <div className="mt-1.5 w-px flex-1 bg-border" />
+              )}
             </div>
-          );
-        })}
-      </div>
+
+            {/* ── Right: card ── */}
+            <div
+              className={`relative mb-3 flex-1 overflow-hidden rounded-2xl border transition-colors duration-500 ${
+                isLast ? "mb-0" : ""
+              } ${
+                isActive
+                  ? "border-primary/30 bg-primary/5"
+                  : "border-border bg-bg"
+              }`}
+            >
+              <div className="px-5 py-4">
+                <div
+                  className={`mb-1.5 text-base font-semibold transition-colors duration-500 ${
+                    isActive ? "text-primary" : isDone ? "text-gray-700" : "text-gray-500"
+                  }`}
+                >
+                  {step.title}
+                </div>
+                <p className="text-sm leading-6 text-gray-500">
+                  {step.description}
+                </p>
+              </div>
+
+              {/* Active progress fill bar */}
+              {isActive && (
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-surface2">
+                  <div
+                    key={active}
+                    className="h-full bg-primary"
+                    style={{
+                      width: "0%",
+                      animation: `processFill ${STEP_DURATION}ms linear forwards`
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+
+          </div>
+        );
+      })}
     </div>
   );
 }

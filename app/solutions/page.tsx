@@ -14,7 +14,7 @@ export default function SolutionsPage() {
           {industrySolutions.map((item, i) => (
             <div
               key={item.name}
-              className="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_18px_45px_rgba(15,23,42,0.10)]"
+              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-bg shadow-sm"
             >
               {/* Gradient accent bar */}
               <div className="h-1 w-full bg-gradient-to-r from-primary to-secondary" />
@@ -25,7 +25,7 @@ export default function SolutionsPage() {
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary">
                     {String(i + 1).padStart(2, "0")}
                   </div>
-                  <h3 className="text-base font-semibold text-gray-900">{item.name}</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
                 </div>
 
                 {/* Description */}
@@ -49,7 +49,7 @@ export default function SolutionsPage() {
       </Section>
 
       {/* CTA */}
-      <section className="border-t border-border px-6 py-16 lg:px-8">
+      <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
         <div className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
           <div className="bg-[#1E293B] px-10 py-10 text-center md:px-14 md:py-12">
             <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">

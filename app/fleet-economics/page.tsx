@@ -198,7 +198,7 @@ export default function FleetEconomicsPage() {
     </Section>
 
       {/* CTA */}
-      <section className="border-t border-border px-6 py-16 lg:px-8">
+      <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
         <div className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
           <div className="bg-[#1E293B] px-10 py-10 text-center md:px-14 md:py-12">
             <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">

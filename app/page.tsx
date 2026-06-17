@@ -49,7 +49,7 @@ export default function HomePage() {
 
             {/* Left: headline + CTA */}
             <div className="lg:col-span-7">
-              <div className="mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+              <div className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                 Electric Logistics Vehicle Solutions
               </div>
 
@@ -157,7 +157,7 @@ export default function HomePage() {
       <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
               Our Role
             </div>
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
@@ -192,7 +192,7 @@ export default function HomePage() {
       <section className="border-t border-border bg-surface px-6 py-14 md:py-24 lg:px-8">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-8 md:mb-14">
-            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
               Advisory Process
             </div>
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
@@ -208,7 +208,7 @@ export default function HomePage() {
       <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-8 max-w-3xl md:mb-12">
-            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
               Explore Solutions
             </div>
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
@@ -240,7 +240,7 @@ export default function HomePage() {
       {/* ── Final CTA ────────────────────────────────────────────── */}
       <section className="px-6 py-14 md:py-24 lg:px-8">
         <div className="mx-auto max-w-[800px] rounded-3xl border border-border bg-surface2 p-8 text-center md:p-14">
-          <div className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+          <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             Consultation
           </div>
           <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
