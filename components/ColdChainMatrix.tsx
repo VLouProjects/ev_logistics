@@ -73,14 +73,14 @@ export default function ColdChainMatrix() {
         {/* Panel header */}
         <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border bg-[#1E293B] px-6 py-5">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">
               Configuration Brief
             </div>
             <div className="mt-1 text-xl font-semibold text-white">{selected.name}</div>
           </div>
           <div className="text-right">
-            <div className="font-mono text-xl font-bold text-primary md:text-2xl">{selected.range}</div>
-            <div className="mt-1 text-xs text-slate-400">溫控範圍</div>
+            <div className="font-mono text-xl font-bold text-teal-300">{selected.range}</div>
+            <div className="mt-1 text-xs text-slate-300">溫控範圍</div>
           </div>
         </div>
 

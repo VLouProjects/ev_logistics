@@ -17,13 +17,13 @@ export default function RefrigerationPage() {
       <section className="border-t border-border px-6 py-16 lg:px-8">
         <div className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
           <div className="bg-[#1E293B] px-10 py-10 text-center md:px-14 md:py-12">
-            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">
               Cold Chain Advisory
             </div>
             <h2 className="text-2xl font-semibold text-white">
               需要根據冷鏈配置評估合適的電動物流車輛？
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-400">
+            <p className="mt-4 text-sm leading-7 text-slate-300">
               提供配送場景、貨物類型及溫控需求，我們將協助您初步評估合適方向。
             </p>
             <Link

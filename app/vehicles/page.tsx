@@ -76,15 +76,16 @@ export default function VehiclesPage() {
       <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
         <div className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
           <div className="bg-[#1E293B] px-10 py-10 text-center md:px-14 md:py-12">
-            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">
               Vehicle Advisory
             </div>
             <h2 className="text-2xl font-semibold text-white">
               需要協助比較及選擇合適的電動物流車輛？
             </h2>
-            <p className="mt-4 text-sm leading-7 text-slate-400">
+            <p className="mt-4 text-sm leading-7 text-slate-300">
               提供業務需求及配送場景，我們將協助您初步評估合適的多品牌車輛方向。
             </p>
+
             <Link
               href="/contact"
               className="mt-8 inline-flex rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"

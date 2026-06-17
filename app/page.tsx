@@ -82,10 +82,10 @@ export default function HomePage() {
               <div className="rounded-2xl bg-[#1E293B] p-7 shadow-xl">
                 {/* Panel header */}
                 <div className="mb-6 flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">
                     Advisory Brief
                   </span>
-                  <span className="flex items-center gap-2 text-xs text-gray-400">
+                  <span className="flex items-center gap-2 text-xs text-gray-300">
                     <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
                     多品牌評估中
                   </span>
@@ -95,7 +95,7 @@ export default function HomePage() {
                 <div className="space-y-0 divide-y divide-white/10">
                   {snapshotRows.map(({ label, value }) => (
                     <div key={label} className="flex items-center justify-between py-3">
-                      <span className="text-xs text-gray-400">{label}</span>
+                      <span className="text-xs text-gray-300">{label}</span>
                       <span className="text-sm font-medium text-white">{value}</span>
                     </div>
                   ))}
@@ -104,8 +104,8 @@ export default function HomePage() {
                 {/* Progress bar */}
                 <div className="mt-6">
                   <div className="mb-2 flex items-center justify-between text-xs">
-                    <span className="text-gray-400">多品牌方案比較進度</span>
-                    <span className="font-medium text-primary">75%</span>
+                    <span className="text-gray-300">多品牌方案比較進度</span>
+                    <span className="font-medium text-teal-300">75%</span>
                   </div>
                   <div className="h-1.5 w-full rounded-full bg-white/10">
                     <div className="h-1.5 w-3/4 rounded-full bg-primary" />
@@ -131,7 +131,7 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <p className="mt-5 text-[11px] leading-5 text-slate-400">
+                <p className="mt-5 text-[11px] leading-5 text-slate-300">
                   本評估為示例用途。實際方向須經專業諮詢後確認。
                 </p>
               </div>
