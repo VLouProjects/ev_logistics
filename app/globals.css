@@ -35,3 +35,8 @@ textarea,
 button {
   font: inherit;
 }
+
+@keyframes processFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}

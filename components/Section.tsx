@@ -12,9 +12,9 @@ export default function Section({
   children
 }: SectionProps) {
   return (
-    <section className="border-t border-border px-6 py-24 lg:px-8">
+    <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
       <div className="mx-auto max-w-[1200px]">
-        <div className="mb-12 max-w-3xl">
+        <div className="mb-8 max-w-3xl md:mb-12">
           {eyebrow && (
             <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
               {eyebrow}

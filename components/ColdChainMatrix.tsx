@@ -10,119 +10,153 @@ import {
   type VehicleCompatibility
 } from "@/data/coldChainMatrix";
 
-const industryBadgeClass: Record<IndustryCompatibility, string> = {
-  "高度適合": "border-primary text-primary",
-  "可考慮": "border-secondary text-secondary",
-  "需進一步評估": "border-warning text-warning"
+const tempAccent: Record<string, string> = {
+  chilled:   "bg-secondary",
+  frozen:    "bg-[#1D4ED8]",
+  pharma:    "bg-primary",
+  multiTemp: "bg-gray-400"
 };
 
-const vehicleBadgeClass: Record<VehicleCompatibility, string> = {
-  "建議": "border-primary text-primary",
-  "可考慮": "border-secondary text-secondary",
-  "不太適合": "border-warning text-warning"
+const industryBadge: Record<IndustryCompatibility, string> = {
+  "高度適合":    "bg-primary/10 text-primary",
+  "可考慮":      "bg-secondary/10 text-secondary",
+  "需進一步評估": "bg-warning/10 text-warning"
+};
+
+const vehiclePill: Record<VehicleCompatibility, { card: string; dot: string; label: string }> = {
+  "建議":    { card: "border-primary/30 bg-primary/5",   dot: "bg-primary",   label: "text-primary" },
+  "可考慮":  { card: "border-secondary/30 bg-secondary/5", dot: "bg-secondary", label: "text-secondary" },
+  "不太適合": { card: "border-warning/30 bg-warning/5",   dot: "bg-warning",   label: "text-warning" }
 };
 
 export default function ColdChainMatrix() {
   const [selectedId, setSelectedId] = useState(temperatureClasses[0].id);
-  const selected = temperatureClasses.find((item) => item.id === selectedId)!;
+  const selected = temperatureClasses.find((t) => t.id === selectedId)!;
 
   return (
-    <div className="space-y-8">
-      <div className="overflow-x-auto rounded-2xl border border-border">
-        <table className="w-full min-w-[640px] border-collapse text-sm">
-          <thead>
-            <tr className="bg-surface2">
-              <th className="border-b border-border p-4 text-left font-medium text-gray-600">
-                溫度分類
-              </th>
-              {industries.map((industry) => (
-                <th
-                  key={industry.id}
-                  className="border-b border-border p-4 text-left font-medium text-gray-600"
-                >
-                  {industry.name}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {temperatureClasses.map((tempClass) => (
-              <tr
-                key={tempClass.id}
-                onClick={() => setSelectedId(tempClass.id)}
-                className={`cursor-pointer border-b border-border transition hover:bg-surface ${
-                  tempClass.id === selectedId ? "bg-surface" : "bg-bg"
-                }`}
-              >
-                <td className="p-4">
-                  <div className="font-semibold text-gray-900">{tempClass.name}</div>
-                  <div className="mt-1 text-xs text-gray-500">{tempClass.range}</div>
-                </td>
-                {industries.map((industry) => {
-                  const level = tempClass.industryCompatibility[industry.id];
-                  return (
-                    <td key={industry.id} className="p-4">
-                      <span
-                        className={`inline-flex rounded-full border px-3 py-1 text-xs font-medium ${industryBadgeClass[level]}`}
-                      >
-                        {level}
-                      </span>
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="space-y-6">
+
+      {/* ── Temperature class selector ───────────────────────────── */}
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {temperatureClasses.map((tc) => {
+          const isSelected = tc.id === selectedId;
+          return (
+            <button
+              key={tc.id}
+              onClick={() => setSelectedId(tc.id)}
+              className={`overflow-hidden rounded-2xl border text-left transition ${
+                isSelected
+                  ? "border-primary ring-1 ring-primary bg-bg"
+                  : "border-border bg-surface hover:border-secondary hover:bg-surface2"
+              }`}
+            >
+              {/* Temperature class colour bar */}
+              <div className={`h-1 w-full ${tempAccent[tc.id]}`} />
+
+              <div className="p-5">
+                <div className={`mb-1 font-mono text-base font-bold tracking-tight ${isSelected ? "text-primary" : "text-gray-400"}`}>
+                  {tc.range}
+                </div>
+                <div className="font-semibold text-gray-900">{tc.name}</div>
+                <div className="mt-1.5 line-clamp-2 text-xs leading-5 text-gray-500">
+                  {tc.cargoExamples}
+                </div>
+              </div>
+            </button>
+          );
+        })}
       </div>
 
-      <div className="rounded-2xl border border-border bg-surface p-6">
-        <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-          方案詳情
+      {/* ── Configuration brief panel ────────────────────────────── */}
+      <div className="overflow-hidden rounded-2xl border border-border">
+
+        {/* Panel header */}
+        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border bg-[#1E293B] px-6 py-5">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Configuration Brief
+            </div>
+            <div className="mt-1 text-xl font-semibold text-white">{selected.name}</div>
+          </div>
+          <div className="text-right">
+            <div className="font-mono text-xl font-bold text-primary md:text-2xl">{selected.range}</div>
+            <div className="mt-1 text-xs text-slate-400">溫控範圍</div>
+          </div>
         </div>
-        <h3 className="text-xl font-semibold text-gray-900">{selected.name}</h3>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 p-6 md:grid-cols-2">
+
+          {/* Cargo examples */}
           <div>
-            <div className="text-sm font-medium text-gray-600">營運應用情境</div>
-            <p className="mt-2 text-sm leading-7 text-gray-500">
-              適用於{selected.cargoExamples}等貨物的配送需求。
-            </p>
+            <div className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-gray-500">
+              適用貨物類型
+            </div>
+            <p className="text-sm leading-7 text-gray-700">{selected.cargoExamples}</p>
           </div>
 
+          {/* Industry compatibility */}
           <div>
-            <div className="text-sm font-medium text-gray-600">溫度需求</div>
-            <p className="mt-2 text-sm leading-7 text-gray-500">{selected.range}</p>
-          </div>
-
-          <div className="md:col-span-2">
-            <div className="text-sm font-medium text-gray-600">車型適配建議</div>
-            <div className="mt-3 flex flex-wrap gap-3">
-              {vehicleClasses.map((vehicleClass) => {
-                const level = selected.vehicleCompatibility[vehicleClass];
+            <div className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-gray-500">
+              行業適配程度
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {industries.map((ind) => {
+                const level = selected.industryCompatibility[ind.id];
                 return (
                   <span
-                    key={vehicleClass}
-                    className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium ${vehicleBadgeClass[level]}`}
+                    key={ind.id}
+                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${industryBadge[level]}`}
                   >
-                    {vehicleClass}
-                    <span className="text-gray-600">{level}</span>
+                    {ind.name}
+                    <span className="opacity-60">· {level}</span>
                   </span>
                 );
               })}
             </div>
           </div>
 
+          {/* Vehicle class compatibility pills */}
           <div className="md:col-span-2">
-            <div className="text-sm font-medium text-gray-600">電動車營運影響</div>
-            <p className="mt-2 text-sm leading-7 text-gray-500">{selected.evImpact}</p>
+            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-gray-500">
+              車型適配建議
+            </div>
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              {vehicleClasses.map((vc) => {
+                const level = selected.vehicleCompatibility[vc];
+                const style = vehiclePill[level];
+                return (
+                  <div key={vc} className={`rounded-xl border p-4 ${style.card}`}>
+                    <div className="mb-2 flex items-center gap-2">
+                      <span className={`h-2 w-2 rounded-full ${style.dot}`} />
+                      <span className={`text-xs font-semibold ${style.label}`}>{level}</span>
+                    </div>
+                    <div className="text-sm font-medium text-gray-900">{vc}</div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
+
+          {/* EV operational impact */}
+          <div className="md:col-span-2 rounded-xl border border-secondary/20 bg-secondary/5 p-5">
+            <div className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-secondary">
+              電動車營運影響
+            </div>
+            <p className="text-sm leading-7 text-gray-600">{selected.evImpact}</p>
+          </div>
+
         </div>
       </div>
 
-      <div className="rounded-2xl border border-border bg-surface2 p-6">
+      {/* ── Advisory disclaimer ──────────────────────────────────── */}
+      <div className="rounded-2xl border border-warning/30 bg-warning/5 p-5">
+        <div className="mb-2 flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-warning" />
+          <span className="text-sm font-semibold text-gray-700">顧問免責聲明</span>
+        </div>
         <p className="text-sm leading-7 text-gray-500">{coldChainDisclaimer}</p>
       </div>
+
     </div>
   );
 }
