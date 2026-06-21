@@ -5,9 +5,13 @@
   --color-surface: #F4F6F8;
   --color-surface2: #E8ECF0;
   --color-border: #D0D7DE;
-  --color-primary: #0D9488;
-  --color-secondary: #0284C7;
-  --color-warning: #D97706;
+  /* Input/control border — darker than --color-border to meet WCAG 1.4.11 (>=3:1) */
+  --color-input: #8A94A6;
+  /* Brand colours darkened (teal-700 / sky-700 / amber-800) so small text and
+     white-on-fill buttons meet WCAG 1.4.3 (>=4.5:1) while keeping the identity. */
+  --color-primary: #0F766E;
+  --color-secondary: #0369A1;
+  --color-warning: #92400E;
   --color-danger: #DC2626;
 }
 
@@ -34,6 +38,17 @@ select,
 textarea,
 button {
   font: inherit;
+}
+
+/* Visible keyboard focus indicator (WCAG 2.4.7) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

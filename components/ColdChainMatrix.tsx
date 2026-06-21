@@ -55,11 +55,11 @@ export default function ColdChainMatrix() {
               <div className={`h-1 w-full ${tempAccent[tc.id]}`} />
 
               <div className="p-5">
-                <div className={`mb-1 font-mono text-base font-bold tracking-tight ${isSelected ? "text-primary" : "text-gray-400"}`}>
+                <div className={`mb-1 font-mono text-base font-bold tracking-tight ${isSelected ? "text-primary" : "text-gray-500"}`}>
                   {tc.range}
                 </div>
                 <div className="font-semibold text-gray-900">{tc.name}</div>
-                <div className="mt-1.5 line-clamp-2 text-xs leading-5 text-gray-500">
+                <div className="mt-1.5 line-clamp-2 text-xs leading-5 text-gray-600">
                   {tc.cargoExamples}
                 </div>
               </div>
@@ -117,7 +117,7 @@ export default function ColdChainMatrix() {
                     className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${industryBadge[level]}`}
                   >
                     {ind.name}
-                    <span className="opacity-60">· {level}</span>
+                    <span className="font-normal">· {level}</span>
                   </span>
                 );
               })}

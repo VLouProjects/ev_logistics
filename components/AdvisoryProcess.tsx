@@ -173,7 +173,7 @@ export default function AdvisoryProcess() {
                   {step.number}
                 </div>
                 <h3 className="mt-1 text-base font-semibold text-gray-900">{step.title}</h3>
-                <p className="mt-2 max-w-[220px] text-sm leading-6 text-gray-500">
+                <p className="mt-2 max-w-[220px] text-sm leading-6 text-gray-600">
                   {step.description}
                 </p>
               </div>
@@ -204,7 +204,7 @@ export default function AdvisoryProcess() {
                   {step.number}
                 </div>
                 <h3 className="mt-1 text-base font-semibold text-gray-900">{step.title}</h3>
-                <p className="mt-1.5 text-sm leading-6 text-gray-500">{step.description}</p>
+                <p className="mt-1.5 text-sm leading-6 text-gray-600">{step.description}</p>
               </div>
             </div>
           );

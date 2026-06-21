@@ -50,7 +50,7 @@ export default function VehiclesPage() {
 
                 {/* Use cases */}
                 <div className="mt-5">
-                  <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-400">
+                  <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">
                     典型應用場景
                   </div>
                   <div className="flex flex-wrap gap-2">

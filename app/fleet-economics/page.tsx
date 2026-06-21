@@ -65,7 +65,7 @@ export default function FleetEconomicsPage() {
 
   const positive = result.monthlyDiff >= 0;
 
-  const inputCls = "w-full rounded-lg border border-border bg-bg px-3 py-2.5 text-sm text-gray-900 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
+  const inputCls = "w-full rounded-lg border border-input bg-bg px-3 py-2.5 text-sm text-gray-900 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
 
   return (
     <>
@@ -119,26 +119,26 @@ export default function FleetEconomicsPage() {
         <div className="space-y-4 lg:col-span-8">
           <div className="flex flex-wrap items-center justify-between gap-1">
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">初步估算結果</div>
-            <div className="text-xs text-gray-400">每月 · 全車隊 · 僅供初步參考</div>
+            <div className="text-xs text-gray-500">每月 · 全車隊 · 僅供初步參考</div>
           </div>
 
           {/* Comparison: diesel vs EV */}
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-xl border border-border bg-surface p-5">
-              <div className="mb-3 text-xs text-gray-500">柴油車隊月均能源費用（估算）</div>
+              <div className="mb-3 text-xs text-gray-600">柴油車隊月均能源費用（估算）</div>
               <div className="text-2xl font-semibold text-gray-900">{fmt(result.dieselMonthly)}</div>
-              <div className="mt-2 text-[11px] text-gray-400">基於柴油消耗率假設</div>
+              <div className="mt-2 text-[11px] text-gray-500">基於柴油消耗率假設</div>
             </div>
             <div className="rounded-xl border border-secondary/30 bg-secondary/5 p-5">
-              <div className="mb-3 text-xs text-gray-500">電動車隊月均能源費用（估算）</div>
+              <div className="mb-3 text-xs text-gray-600">電動車隊月均能源費用（估算）</div>
               <div className="text-2xl font-semibold text-secondary">{fmt(result.evMonthly)}</div>
-              <div className="mt-2 text-[11px] text-gray-400">已計入冷鏈用電調整因素</div>
+              <div className="mt-2 text-[11px] text-gray-500">已計入冷鏈用電調整因素</div>
             </div>
           </div>
 
           {/* Cost ratio bar */}
           <div className="rounded-xl border border-border bg-surface p-4">
-            <div className="mb-2 flex justify-between text-xs text-gray-500">
+            <div className="mb-2 flex justify-between text-xs text-gray-600">
               <span>電動能源費用相對柴油比例（初步估算）</span>
               <span className="font-semibold text-gray-700">{result.evRatioPct}%</span>
             </div>
@@ -153,18 +153,18 @@ export default function FleetEconomicsPage() {
           {/* Differential KPIs */}
           <div className="grid gap-3 sm:grid-cols-2">
             <div className={`rounded-xl border p-5 ${positive ? "border-primary bg-primary/5" : "border-warning/40 bg-warning/5"}`}>
-              <div className="mb-3 text-xs text-gray-500">估算每月成本差異</div>
+              <div className="mb-3 text-xs text-gray-600">估算每月成本差異</div>
               <div className={`text-2xl font-semibold ${positive ? "text-primary" : "text-warning"}`}>
                 {positive && "+"}{fmt(result.monthlyDiff)}
               </div>
-              <div className="mt-2 text-[11px] text-gray-400">單月全車隊估算差異</div>
+              <div className="mt-2 text-[11px] text-gray-500">單月全車隊估算差異</div>
             </div>
             <div className={`rounded-xl border p-5 ${positive ? "border-primary bg-primary/5" : "border-warning/40 bg-warning/5"}`}>
-              <div className="mb-3 text-xs text-gray-500">估算年度成本差異</div>
+              <div className="mb-3 text-xs text-gray-600">估算年度成本差異</div>
               <div className={`text-2xl font-semibold ${positive ? "text-primary" : "text-warning"}`}>
                 {positive && "+"}{fmt(result.annualDiff)}
               </div>
-              <div className="mt-2 text-[11px] text-gray-400">12 個月全車隊估算差異</div>
+              <div className="mt-2 text-[11px] text-gray-500">12 個月全車隊估算差異</div>
             </div>
           </div>
         </div>
@@ -181,7 +181,7 @@ export default function FleetEconomicsPage() {
             <MotionReveal key={f.title} delay={Math.min(i, 3) * 80}>
             <div className="h-full rounded-xl border border-border bg-surface p-5">
               <div className="mb-2 text-sm font-semibold text-gray-900">{f.title}</div>
-              <p className="text-xs leading-5 text-gray-500">{f.body}</p>
+              <p className="text-xs leading-5 text-gray-600">{f.body}</p>
             </div>
             </MotionReveal>
           ))}

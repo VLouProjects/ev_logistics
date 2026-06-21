@@ -148,7 +148,7 @@ export default function HomePage() {
                     <span className="text-primary">✓</span>
                     {pillar.label}
                   </div>
-                  <p className="mt-2 text-xs leading-5 text-gray-500">{pillar.detail}</p>
+                  <p className="mt-2 text-xs leading-5 text-gray-600">{pillar.detail}</p>
                 </div>
               </MotionReveal>
             ))}
@@ -177,13 +177,13 @@ export default function HomePage() {
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl border border-border bg-surface p-6">
                   <div className="text-sm font-semibold text-primary">Selection First</div>
-                  <p className="mt-3 text-sm leading-6 text-gray-500">
+                  <p className="mt-3 text-sm leading-6 text-gray-600">
                     先分析業務需求，再建議合適車型及配置方向。
                   </p>
                 </div>
                 <div className="rounded-2xl border border-border bg-surface p-6">
                   <div className="text-sm font-semibold text-secondary">Multi-Brand Neutrality</div>
-                  <p className="mt-3 text-sm leading-6 text-gray-500">
+                  <p className="mt-3 text-sm leading-6 text-gray-600">
                     以多品牌選擇及實際應用場景作為方案基礎。
                   </p>
                 </div>
@@ -205,7 +205,7 @@ export default function HomePage() {
               <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
                 從需求分析到車輛採購，提供專業選型支援
               </h2>
-              <p className="mt-4 text-base leading-7 text-gray-500">
+              <p className="mt-4 text-base leading-7 text-gray-600">
                 根據車輛用途、配送距離、載貨需求及冷鏈要求，協助企業比較不同車型及配置方向。
               </p>
             </div>
@@ -225,7 +225,7 @@ export default function HomePage() {
               <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
                 從業務需求出發，選擇合適的電動物流方案
               </h2>
-              <p className="mt-4 text-base leading-7 text-gray-500">
+              <p className="mt-4 text-base leading-7 text-gray-600">
                 深入了解車輛方案、行業應用、冷鏈配置及車隊規劃服務。
               </p>
             </div>
@@ -239,7 +239,7 @@ export default function HomePage() {
                   className="group block h-full rounded-3xl border border-border bg-surface p-8 transition hover:border-secondary hover:bg-surface2"
                 >
                   <div className="text-xl font-semibold text-gray-900">{card.title}</div>
-                  <p className="mt-4 text-sm leading-7 text-gray-500">{card.description}</p>
+                  <p className="mt-4 text-sm leading-7 text-gray-600">{card.description}</p>
                   <div className="mt-8 text-sm font-semibold text-primary group-hover:text-secondary">
                     {card.cta} →
                   </div>
@@ -260,7 +260,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
               需要協助選擇合適的電動物流車輛方案？
             </h2>
-            <p className="mt-5 text-base leading-7 text-gray-500">
+            <p className="mt-5 text-base leading-7 text-gray-600">
               提供您的業務需求、車輛用途及冷鏈要求，我們將協助您初步評估合適方向。
             </p>
             <Link
