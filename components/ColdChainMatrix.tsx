@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import AspectImage from "@/components/AspectImage";
 import {
   coldChainDisclaimer,
   industries,
@@ -69,6 +70,14 @@ export default function ColdChainMatrix() {
 
       {/* ── Configuration brief panel ────────────────────────────── */}
       <div className="overflow-hidden rounded-2xl border border-border">
+
+        {/* Context banner — swaps with the selected temperature class */}
+        <AspectImage
+          src={selected.image}
+          alt={selected.name}
+          heightClass="h-36 md:h-48"
+          sizes="(min-width:1024px) 1024px, 100vw"
+        />
 
         {/* Panel header */}
         <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border bg-[#1E293B] px-6 py-5">

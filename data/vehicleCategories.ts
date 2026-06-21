@@ -1,4 +1,13 @@
-export const vehicleCategories = [
+export type VehicleCategory = {
+  name: string;
+  description: string;
+  useCases: string[];
+  refrigerationOption: string;
+  /** Local path under /public, e.g. "/images/vehicles/light-truck.webp". Optional until photography is supplied. */
+  image?: string;
+};
+
+export const vehicleCategories: VehicleCategory[] = [
   {
     name: "電動客貨車",
     description: "適合城市配送、電商物流及中小型企業運輸。",

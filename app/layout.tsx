@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "EV Logistics Expert",
+  title: "澳門新吉利新能源綜合車輛有限公司",
   description:
     "企業級電動物流車輛及冷鏈運輸方案專家"
 };

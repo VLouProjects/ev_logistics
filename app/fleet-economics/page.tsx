@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import Section from "@/components/Section";
+import MotionReveal from "@/components/MotionReveal";
 
 const assumptions = {
   "電動客貨車":  { diesel: 0.12, ev: 0.35 },
@@ -176,11 +177,13 @@ export default function FleetEconomicsPage() {
           <p className="mt-1 text-sm text-gray-500">以下因素未完全反映於估算模型，實際成本差異視具體情況而定。</p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {costFactors.map((f) => (
-            <div key={f.title} className="rounded-xl border border-border bg-surface p-5">
+          {costFactors.map((f, i) => (
+            <MotionReveal key={f.title} delay={Math.min(i, 3) * 80}>
+            <div className="h-full rounded-xl border border-border bg-surface p-5">
               <div className="mb-2 text-sm font-semibold text-gray-900">{f.title}</div>
               <p className="text-xs leading-5 text-gray-500">{f.body}</p>
             </div>
+            </MotionReveal>
           ))}
         </div>
       </div>
@@ -199,7 +202,7 @@ export default function FleetEconomicsPage() {
 
       {/* CTA */}
       <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
+        <MotionReveal className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
           <div className="bg-[#1E293B] px-10 py-10 text-center md:px-14 md:py-12">
             <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">
               Fleet Advisory
@@ -217,7 +220,7 @@ export default function FleetEconomicsPage() {
               預約車隊顧問
             </Link>
           </div>
-        </div>
+        </MotionReveal>
       </section>
     </>
   );

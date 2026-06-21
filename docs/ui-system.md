@@ -1,4 +1,4 @@
-# UI System — EV Logistics Expert
+# UI System — 澳門新吉利新能源綜合車輛有限公司
 
 > Authoritative reference for all UI decisions on this website.  
 > Source of truth when code and design intent conflict.

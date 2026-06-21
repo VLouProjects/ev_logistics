@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { trustPillars } from "@/data/trustPillars";
 import AdvisoryProcess from "@/components/AdvisoryProcess";
+import MotionReveal from "@/components/MotionReveal";
 
 const gatewayCards = [
   {
@@ -29,12 +30,11 @@ const gatewayCards = [
   }
 ];
 
-
 const snapshotRows = [
+  { label: "行業", value: "食品及零售配送" },
   { label: "車輛類型", value: "輕型電動貨車" },
   { label: "冷鏈需求", value: "冷藏 0–5°C" },
-  { label: "車隊規模", value: "5–15 輛" },
-  { label: "行業場景", value: "食品及零售配送" }
+  { label: "車隊規模", value: "5–15 輛" }
 ];
 
 const snapshotSteps = ["需求分析", "車型比較", "冷鏈配置", "採購建議"];
@@ -43,6 +43,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────────── */}
+      {/* No MotionReveal on hero — already visible on load (motion-system.md §2a) */}
       <section className="px-6 py-12 lg:px-8 lg:py-32">
         <div className="mx-auto max-w-[1200px]">
           <div className="grid items-center gap-12 lg:grid-cols-12">
@@ -138,16 +139,18 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Trust bar */}
+          {/* Trust bar — stagger reveal as section scrolls into view */}
           <div className="mt-10 grid gap-4 md:mt-16 md:grid-cols-4">
-            {trustPillars.map((pillar) => (
-              <div
-                key={pillar}
-                className="rounded-xl border border-border bg-surface p-5 text-sm font-medium text-gray-600"
-              >
-                <span className="mr-2 text-primary">✓</span>
-                {pillar}
-              </div>
+            {trustPillars.map((pillar, i) => (
+              <MotionReveal key={pillar.label} delay={i * 80}>
+                <div className="h-full rounded-xl border border-border bg-surface p-5">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-gray-900">
+                    <span className="text-primary">✓</span>
+                    {pillar.label}
+                  </div>
+                  <p className="mt-2 text-xs leading-5 text-gray-500">{pillar.detail}</p>
+                </div>
+              </MotionReveal>
             ))}
           </div>
         </div>
@@ -155,83 +158,93 @@ export default function HomePage() {
 
       {/* ── Positioning Statement ────────────────────────────────── */}
       <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
-        <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              Our Role
-            </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
-              不只是車輛供應，而是電動物流方案選型夥伴
-            </h2>
-          </div>
-
-          <div className="lg:col-span-7">
-            <p className="text-lg leading-8 text-gray-600">
-              我們協助企業在導入電動物流車輛前，先釐清車輛類型、載貨需求、配送路線、冷鏈配置及營運成本因素，再根據實際業務場景匹配合適的多品牌車輛方案。
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-border bg-surface p-6">
-                <div className="text-sm font-semibold text-primary">Selection First</div>
-                <p className="mt-3 text-sm leading-6 text-gray-500">
-                  先分析業務需求，再建議合適車型及配置方向。
-                </p>
+        <MotionReveal>
+          <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Our Role
               </div>
-              <div className="rounded-2xl border border-border bg-surface p-6">
-                <div className="text-sm font-semibold text-secondary">Multi-Brand Neutrality</div>
-                <p className="mt-3 text-sm leading-6 text-gray-500">
-                  以多品牌選擇及實際應用場景作為方案基礎。
-                </p>
+              <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
+                不只是車輛供應，而是電動物流方案選型夥伴
+              </h2>
+            </div>
+
+            <div className="lg:col-span-7">
+              <p className="text-lg leading-8 text-gray-600">
+                我們協助企業在導入電動物流車輛前，先釐清車輛類型、載貨需求、配送路線、冷鏈配置及營運成本因素，再根據實際業務場景匹配合適的多品牌車輛方案。
+              </p>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-border bg-surface p-6">
+                  <div className="text-sm font-semibold text-primary">Selection First</div>
+                  <p className="mt-3 text-sm leading-6 text-gray-500">
+                    先分析業務需求，再建議合適車型及配置方向。
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-border bg-surface p-6">
+                  <div className="text-sm font-semibold text-secondary">Multi-Brand Neutrality</div>
+                  <p className="mt-3 text-sm leading-6 text-gray-500">
+                    以多品牌選擇及實際應用場景作為方案基礎。
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </MotionReveal>
       </section>
 
       {/* ── Advisory Process ─────────────────────────────────────── */}
+      {/* Single MotionReveal covers header + component so they appear together */}
       <section className="border-t border-border bg-surface px-6 py-14 md:py-24 lg:px-8">
         <div className="mx-auto max-w-[1200px]">
-          <div className="mb-8 md:mb-14">
-            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              Advisory Process
+          <MotionReveal>
+            <div className="mb-8 max-w-3xl md:mb-14">
+              <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Advisory Process
+              </div>
+              <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
+                從需求分析到車輛採購，提供專業選型支援
+              </h2>
+              <p className="mt-4 text-base leading-7 text-gray-500">
+                根據車輛用途、配送距離、載貨需求及冷鏈要求，協助企業比較不同車型及配置方向。
+              </p>
             </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
-              從需求到採購，全程顧問支援
-            </h2>
-          </div>
-
-          <AdvisoryProcess />
+            <AdvisoryProcess />
+          </MotionReveal>
         </div>
       </section>
 
       {/* ── Gateway Cards ────────────────────────────────────────── */}
       <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
         <div className="mx-auto max-w-[1200px]">
-          <div className="mb-8 max-w-3xl md:mb-12">
-            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              Explore Solutions
+          <MotionReveal>
+            <div className="mb-8 max-w-3xl md:mb-12">
+              <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Explore Solutions
+              </div>
+              <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
+                從業務需求出發，選擇合適的電動物流方案
+              </h2>
+              <p className="mt-4 text-base leading-7 text-gray-500">
+                深入了解車輛方案、行業應用、冷鏈配置及車隊規劃服務。
+              </p>
             </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
-              從業務需求出發，選擇合適的電動物流方案
-            </h2>
-            <p className="mt-4 text-base leading-7 text-gray-500">
-              深入了解車輛方案、行業應用、冷鏈配置及車隊規劃服務。
-            </p>
-          </div>
+          </MotionReveal>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {gatewayCards.map((card) => (
-              <Link
-                key={card.title}
-                href={card.href}
-                className="group rounded-3xl border border-border bg-surface p-8 transition hover:border-secondary hover:bg-surface2"
-              >
-                <div className="text-xl font-semibold text-gray-900">{card.title}</div>
-                <p className="mt-4 text-sm leading-7 text-gray-500">{card.description}</p>
-                <div className="mt-8 text-sm font-semibold text-primary group-hover:text-secondary">
-                  {card.cta} →
-                </div>
-              </Link>
+            {gatewayCards.map((card, i) => (
+              <MotionReveal key={card.title} delay={Math.min(i, 4) * 80}>
+                <Link
+                  href={card.href}
+                  className="group block h-full rounded-3xl border border-border bg-surface p-8 transition hover:border-secondary hover:bg-surface2"
+                >
+                  <div className="text-xl font-semibold text-gray-900">{card.title}</div>
+                  <p className="mt-4 text-sm leading-7 text-gray-500">{card.description}</p>
+                  <div className="mt-8 text-sm font-semibold text-primary group-hover:text-secondary">
+                    {card.cta} →
+                  </div>
+                </Link>
+              </MotionReveal>
             ))}
           </div>
         </div>
@@ -239,23 +252,25 @@ export default function HomePage() {
 
       {/* ── Final CTA ────────────────────────────────────────────── */}
       <section className="px-6 py-14 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-[800px] rounded-3xl border border-border bg-surface2 p-8 text-center md:p-14">
-          <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            Consultation
+        <MotionReveal className="mx-auto max-w-[800px]">
+          <div className="rounded-3xl border border-border bg-surface2 p-8 text-center md:p-14">
+            <div className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Consultation
+            </div>
+            <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
+              需要協助選擇合適的電動物流車輛方案？
+            </h2>
+            <p className="mt-5 text-base leading-7 text-gray-500">
+              提供您的業務需求、車輛用途及冷鏈要求，我們將協助您初步評估合適方向。
+            </p>
+            <Link
+              href="/contact"
+              className="mt-8 inline-flex rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+            >
+              提交諮詢
+            </Link>
           </div>
-          <h2 className="text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
-            需要協助選擇合適的電動物流車輛方案？
-          </h2>
-          <p className="mt-5 text-base leading-7 text-gray-500">
-            提供您的業務需求、車輛用途及冷鏈要求，我們將協助您初步評估合適方向。
-          </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-          >
-            提交諮詢
-          </Link>
-        </div>
+        </MotionReveal>
       </section>
     </>
   );

@@ -16,7 +16,19 @@ export const vehicleClasses = [
   "重型電動貨車"
 ] as const;
 
-export const temperatureClasses = [
+export type TemperatureClass = {
+  id: string;
+  name: string;
+  range: string;
+  cargoExamples: string;
+  industryCompatibility: Record<string, IndustryCompatibility>;
+  vehicleCompatibility: Record<string, VehicleCompatibility>;
+  evImpact: string;
+  /** Local path under /public, e.g. "/images/cold-chain/frozen.webp". Optional until photography is supplied. */
+  image?: string;
+};
+
+export const temperatureClasses: TemperatureClass[] = [
   {
     id: "chilled",
     name: "冷藏配送",

@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="border-t border-border bg-bg">
       <div className="mx-auto grid max-w-[1200px] gap-8 px-6 py-10 md:grid-cols-3 lg:px-8">
         <div>
-          <div className="font-semibold text-gray-900">EV Logistics Expert</div>
+          <div className="font-semibold text-gray-900">澳門新吉利</div>
           <p className="mt-3 text-sm leading-6 text-gray-500">
             企業級電動物流車輛及冷鏈運輸方案專家。
           </p>
@@ -20,7 +20,21 @@ export default function Footer() {
 
         <div>
           <div className="text-sm font-medium text-gray-900">聯絡</div>
-          <p className="mt-3 text-sm text-gray-500">
+          <ul className="mt-3 space-y-2 text-sm text-gray-500">
+            <li>
+              電話：
+              <a href="tel:+85300000000" className="transition hover:text-primary">
+                +853 0000 0000
+              </a>
+            </li>
+            <li>
+              電郵：
+              <a href="mailto:info@example.com" className="transition hover:text-primary">
+                info@example.com
+              </a>
+            </li>
+          </ul>
+          <p className="mt-3 text-sm leading-6 text-gray-500">
             提交需求後，我們將協助您初步評估合適方案。
           </p>
         </div>

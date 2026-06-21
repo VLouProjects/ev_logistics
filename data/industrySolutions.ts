@@ -1,4 +1,12 @@
-export const industrySolutions = [
+export type IndustrySolution = {
+  name: string;
+  description: string;
+  considerations: string[];
+  /** Local path under /public, e.g. "/images/solutions/retail.webp". Optional until photography is supplied. */
+  image?: string;
+};
+
+export const industrySolutions: IndustrySolution[] = [
   {
     name: "餐飲及食品配送",
     description: "支援餐飲集團、中央廚房及食品供應鏈的日常配送需求。",

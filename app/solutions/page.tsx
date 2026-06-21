@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Section from "@/components/Section";
+import MotionReveal from "@/components/MotionReveal";
+import AspectImage from "@/components/AspectImage";
 import { industrySolutions } from "@/data/industrySolutions";
 
 export default function SolutionsPage() {
@@ -12,24 +14,28 @@ export default function SolutionsPage() {
       >
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {industrySolutions.map((item, i) => (
+            <MotionReveal key={item.name} delay={Math.min(i, 4) * 80}>
             <div
-              key={item.name}
-              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-bg shadow-sm"
+              className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-bg shadow-sm"
             >
-              {/* Gradient accent bar */}
-              <div className="h-1 w-full bg-gradient-to-r from-primary to-secondary" />
+              {/* Image with overlaid editorial index number */}
+              <div className="relative">
+                <AspectImage
+                  src={item.image}
+                  alt={item.name}
+                  ratio="3/2"
+                  sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+                />
+                <div className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-sm font-bold text-white shadow-md">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+              </div>
 
               <div className="flex flex-1 flex-col p-6">
-                {/* Numbered icon + title */}
-                <div className="mb-3 flex items-center gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
-                </div>
+                <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
 
                 {/* Description */}
-                <p className="text-sm leading-6 text-gray-500">{item.description}</p>
+                <p className="mt-3 text-sm leading-6 text-gray-500">{item.description}</p>
 
                 {/* Use-case tags */}
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -44,13 +50,14 @@ export default function SolutionsPage() {
                 </div>
               </div>
             </div>
+            </MotionReveal>
           ))}
         </div>
       </Section>
 
       {/* CTA */}
       <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
+        <MotionReveal className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
           <div className="bg-[#1E293B] px-10 py-10 text-center md:px-14 md:py-12">
             <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">
               Industry Advisory
@@ -68,7 +75,7 @@ export default function SolutionsPage() {
               提交諮詢
             </Link>
           </div>
-        </div>
+        </MotionReveal>
       </section>
     </>
   );

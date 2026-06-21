@@ -9,8 +9,7 @@ const navItems = [
   { label: "行業應用", href: "/solutions" },
   { label: "冷鏈方案", href: "/refrigeration" },
   { label: "品牌組合", href: "/brand-portfolio" },
-  { label: "車隊顧問", href: "/fleet-economics" },
-  { label: "聯絡我們", href: "/contact" }
+  { label: "車隊顧問", href: "/fleet-economics" }
 ];
 
 export default function Navbar() {
@@ -19,16 +18,17 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 md:h-20 md:px-6 lg:px-8">
+        {/* Logo: swap the text wordmark below for <Image src="/images/logo.svg" .../> when supplied */}
         <Link
           href="/"
           className="text-base font-semibold tracking-tight text-gray-900 md:text-lg"
           onClick={() => setOpen(false)}
         >
-          EV Logistics Expert
+          澳門新吉利
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -42,14 +42,14 @@ export default function Navbar() {
 
         <Link
           href="/contact"
-          className="hidden rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 md:inline-flex"
+          className="hidden rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 lg:inline-flex"
         >
           預約諮詢
         </Link>
 
         {/* Mobile hamburger button */}
         <button
-          className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-gray-600 md:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-gray-600 lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle navigation"
         >
@@ -67,7 +67,7 @@ export default function Navbar() {
 
       {/* Mobile menu panel */}
       {open && (
-        <div className="border-t border-border bg-bg/95 px-4 pb-5 pt-2 backdrop-blur md:hidden">
+        <div className="border-t border-border bg-bg/95 px-4 pb-5 pt-2 backdrop-blur lg:hidden">
           <nav className="flex flex-col">
             {navItems.map((item) => (
               <Link

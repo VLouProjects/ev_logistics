@@ -1,11 +1,14 @@
 import Link from "next/link";
 import Section from "@/components/Section";
+import MotionReveal from "@/components/MotionReveal";
+import AspectImage from "@/components/AspectImage";
 import { vehicleCategories } from "@/data/vehicleCategories";
 
+// Overlay spec-tag colours (white pill + coloured text/ring, readable over imagery).
 const refPill: Record<string, string> = {
-  "可選配":            "border-secondary/30 bg-secondary/10 text-secondary",
-  "核心方案":          "border-primary/30 bg-primary/10 text-primary",
-  "視品牌及車型而定":  "border-warning/30 bg-warning/10 text-warning"
+  "可選配":            "text-secondary ring-secondary/30",
+  "核心方案":          "text-primary ring-primary/30",
+  "視品牌及車型而定":  "text-warning ring-warning/30"
 };
 
 export default function VehiclesPage() {
@@ -18,27 +21,32 @@ export default function VehiclesPage() {
       >
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {vehicleCategories.map((item, i) => (
+            <MotionReveal key={item.name} delay={Math.min(i, 4) * 80}>
             <div
-              key={item.name}
-              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-bg shadow-sm"
+              className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-bg shadow-sm"
             >
-              <div className="h-1 w-full shrink-0 bg-gradient-to-r from-primary to-secondary" />
+              {/* Image with overlaid refrigeration spec-tag */}
+              <div className="relative">
+                <AspectImage
+                  src={item.image}
+                  alt={item.name}
+                  ratio="4/3"
+                  sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+                />
+                <span
+                  className={`absolute right-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-medium shadow-sm ring-1 backdrop-blur-sm ${
+                    refPill[item.refrigerationOption] ?? "text-gray-600 ring-border"
+                  }`}
+                >
+                  冷鏈{item.refrigerationOption}
+                </span>
+              </div>
 
               <div className="flex flex-1 flex-col p-6">
-                {/* Name + refrigeration badge */}
-                <div className="mb-4 flex items-start justify-between gap-3">
-                  <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
-                  <span
-                    className={`shrink-0 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${
-                      refPill[item.refrigerationOption] ?? "border-border bg-surface text-gray-500"
-                    }`}
-                  >
-                    冷鏈{item.refrigerationOption}
-                  </span>
-                </div>
+                <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
 
                 {/* Description */}
-                <p className="text-sm leading-6 text-gray-500">{item.description}</p>
+                <p className="mt-3 text-sm leading-6 text-gray-500">{item.description}</p>
 
                 {/* Use cases */}
                 <div className="mt-5">
@@ -68,13 +76,14 @@ export default function VehiclesPage() {
                 </div>
               </div>
             </div>
+            </MotionReveal>
           ))}
         </div>
       </Section>
 
       {/* CTA */}
       <section className="border-t border-border px-6 py-14 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
+        <MotionReveal className="mx-auto max-w-[800px] overflow-hidden rounded-3xl">
           <div className="bg-[#1E293B] px-10 py-10 text-center md:px-14 md:py-12">
             <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">
               Vehicle Advisory
@@ -93,7 +102,7 @@ export default function VehiclesPage() {
               預約選型諮詢
             </Link>
           </div>
-        </div>
+        </MotionReveal>
       </section>
     </>
   );
